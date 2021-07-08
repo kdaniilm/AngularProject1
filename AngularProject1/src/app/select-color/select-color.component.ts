@@ -8,14 +8,17 @@ import { SetColorService } from '../shared/services/set-color-service';
 })
 export class SelectColorComponent implements OnInit {
 
-  colors = ["red", "green", "blue", "pink"];
+  public colors = ["red", "green", "blue", "pink"];
 
   constructor(private colorService: SetColorService) { }
 
   ngOnInit(): void {
   }
 
-  public setColor(color: string){
+  public setColor(color: any){
+    color = color.value;
+    if(color != null){
     this.colorService.color = color;
+    }
   }
 }
